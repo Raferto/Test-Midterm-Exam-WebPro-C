@@ -12,19 +12,19 @@
             <!-- untuk keamanan tambahkan csrf -->
             @csrf
                 <div class="form-group">
-                    <label for="nama_barang">Nama</label>
-                    <input type="text" class="form-control @error('nama_barang') is-invalid @enderror"
-                    id="nama_barang" placeholder="Masukkan Nama Barang" name="nama_barang" value="{{ $item->nama_barang }}">
-                    @error('nama_barang')
+                    <label for="item_name">Nama</label>
+                    <input type="text" class="form-control @error('item_name') is-invalid @enderror"
+                    id="item_name" placeholder="Masukkan Nama Barang" name="item_name" value="{{ $item->item_name }}">
+                    @error('item_name')
                     <div class="invalid-feedback"> {{ $message }} </div>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="jenis_barang">Jenis</label>
+                    <label for="item_category">Jenis</label>
                     <!-- old value untuk tetap ada nilanya jika ada yang error -->
-                    <input type="text" class="form-control @error('jenis_barang') is-invalid @enderror" 
-                    id="jenis_barang" placeholder="Masukkan Jenis Barang" name="jenis_barang"value="{{ $item->jenis_barang }}">
-                    @error('jenis_barang')
+                    <input type="text" class="form-control @error('item_category') is-invalid @enderror" 
+                    id="item_category" placeholder="Masukkan Jenis Barang" name="item_category"value="{{ $item->item_category }}">
+                    @error('item_category')
                     <div class="invalid-feedback"> {{ $message }} </div>
                     @enderror
                 </div>

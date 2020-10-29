@@ -19,7 +19,7 @@
                 
                 @foreach ($items as $item)
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    {{ $item->nama_barang }}
+                    {{ $item->item_name }}
                     <a href="/items/{{$item->id}}"class="badge badge-info">detail</a>
                 </li>
                 @endforeach

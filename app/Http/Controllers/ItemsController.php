@@ -38,20 +38,20 @@ class ItemsController extends Controller
     {
         // cara 1
         // $item = new Item;
-        // $item->nama_barang = $request->nama_barang;
-        // $item->jenis_barang = $request->jenis_barang;
+        // $item->item_name = $request->item_name;
+        // $item->item_category = $request->item_category;
 
         // $item->save();
 
         //cara 2
         // Item::create([
-        //     'nama_barang' => $request->nama_barang,
-        //     'jenis_barang' => $request->jenis_barang
+        //     'item_name' => $request->item_name,
+        //     'item_category' => $request->item_category
         // ]);
         
         $request->validate([
-            'nama_barang' => 'required',
-            'jenis_barang' => 'required'
+            'item_name' => 'required',
+            'item_category' => 'required'
         ]);
 
         // cara 3
@@ -92,14 +92,14 @@ class ItemsController extends Controller
     public function update(Request $request, Item $item)
     {
         $request->validate([
-            'nama_barang' => 'required',
-            'jenis_barang' => 'required'
+            'item_name' => 'required',
+            'item_category' => 'required'
         ]);
         
         Item::where('id',$item->id)
             ->update([
-                'nama_barang' => $request->nama_barang,
-                'jenis_barang' => $request->jenis_barang
+                'item_name' => $request->item_name,
+                'item_category' => $request->item_category
             ]);
 
         return redirect('/items')->with('status','Data Barang Berhasil Diubah!');

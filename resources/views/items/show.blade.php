@@ -8,8 +8,8 @@
             <h1 class="mt-2">Detail Barang</h1>
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">{{ $item->nama_barang}}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">{{ $item->jenis_barang }}</h6>
+                    <h5 class="card-title">{{ $item->item_name}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ $item->item_category }}</h6>
                     <!-- <p class="card-text">{{ $item->lain_lain }}</p> -->
 
                     <a href="{{ $item->id }}/edit" class="btn btn-primary">Edit</a>

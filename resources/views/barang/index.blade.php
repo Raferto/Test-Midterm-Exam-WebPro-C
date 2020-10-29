@@ -20,8 +20,8 @@
                     @foreach( $barang as $brg )
                     <tr>
                         <th scope="row">{{ $loop->iteration }}</th>
-                        <td>{{ $brg->nama_barang }}</td>
-                        <td>{{ $brg->jenis_barang }}</td>
+                        <td>{{ $brg->item_name }}</td>
+                        <td>{{ $brg->item_category }}</td>
                         <td>
                             <a href="" class="badge badge-success">edit</a>
                             <a href="" class="badge badge-danger">delete</a>
