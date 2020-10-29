@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RenameFieldItems extends Migration
+class AddForeignKeyToItems extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,8 @@ class RenameFieldItems extends Migration
     public function up()
     {
         Schema::table('items', function (Blueprint $table) {
-            $table->renameColumn('nama_barang', 'item_name');
-            $table->renameColumn('jenis_barang', 'item_category');
+            $table->foreign('category_id')->references('id')->on('item_categories')->onDelete('cascade');
+            $table->foreign('condition_id')->references('id')->on('item_conditions')->onDelete('cascade');
         });
     }
 
@@ -27,8 +27,8 @@ class RenameFieldItems extends Migration
     public function down()
     {
         Schema::table('items', function (Blueprint $table) {
-            $table->renameColumn('item_name', 'nama_barang');
-            $table->renameColumn('item_category', 'jenis_barang');
+            $table->dropForeign(['category_id']); 
+            $table->dropForeign(['condition_id']);
         });
     }
 }
