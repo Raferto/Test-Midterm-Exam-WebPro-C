@@ -16,6 +16,7 @@ class AddForeignKeyToItems extends Migration
         Schema::table('items', function (Blueprint $table) {
             $table->foreign('category_id')->references('id')->on('item_categories')->onDelete('cascade');
             $table->foreign('condition_id')->references('id')->on('item_conditions')->onDelete('cascade');
+            $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade');
         });
     }
 
@@ -27,8 +28,9 @@ class AddForeignKeyToItems extends Migration
     public function down()
     {
         Schema::table('items', function (Blueprint $table) {
-            $table->dropForeign(['category_id']); 
+            $table->dropForeign(['category_id']);
             $table->dropForeign(['condition_id']);
+            $table->dropForeign(['shop_id']);
         });
     }
 }

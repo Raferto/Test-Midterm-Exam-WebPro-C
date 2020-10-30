@@ -29,6 +29,8 @@ use App\Http\Controllers\ItemsController;
 Route::get('/',[PagesController::class, 'home']);
 Route::get('/about',[PagesController::class,'about']);
 Route::get('/barang',[BarangController::class,'index']);
+Route::get('/login',[PagesController::class, 'login']);
+Route::get('/register',[PagesController::class, 'register']);
 
 //item sama dengan barang
 // Route::get('/items',[ItemsController::class,'index']);

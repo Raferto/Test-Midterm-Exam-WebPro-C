@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->text('address');
             $table->foreignId('city_id')->nullable()->unsigned;
             $table->timestamps();
+            $table->string('auth_level');
             $table->foreignId('shop_id')->nullable()->unsigned;            
 
         });
