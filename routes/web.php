@@ -32,6 +32,7 @@ Route::get('/about',[PagesController::class,'about'])->name('about');
 Route::get('/barang',[BarangController::class,'index']);
 
 Route::post('/postLogin',[AuthController::class,'postLogin']);
+Route::post('/postRegister', [AuthController::class, 'postRegister']);
 Route::get('/login',[AuthController::class, 'login'])->name('login');
 Route::get('/register',[AuthController::class, 'register']);
 

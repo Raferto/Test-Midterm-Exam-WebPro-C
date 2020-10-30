@@ -25,6 +25,22 @@ class AuthController extends Controller
         return redirect('/login');
     }
 
+    public function postRegister(Request $request){
+        try {
+            $user = new \App\Models\User;
+            $user->name = $request->name;
+            $user->username = $request->username;
+            $user->email = $request->email;
+            $user->password = bcrypt($request->password);
+            $user->auth_level = 'user';
+            $user->save();
+            return redirect('/login')->with('status', 'Your Account Has Created');
+        } catch (Throwable $e) {
+            report($e);
+            return false;
+        }
+    }
+
     public function logout()
     {
         Auth::logout();
