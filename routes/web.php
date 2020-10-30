@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\ItemsController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,11 +27,13 @@ use App\Http\Controllers\ItemsController;
 // });
 
 
-Route::get('/',[PagesController::class, 'home']);
-Route::get('/about',[PagesController::class,'about']);
+Route::get('/',[PagesController::class, 'home'])->name('home');
+Route::get('/about',[PagesController::class,'about'])->name('about');
 Route::get('/barang',[BarangController::class,'index']);
-Route::get('/login',[PagesController::class, 'login']);
-Route::get('/register',[PagesController::class, 'register']);
+
+Route::post('/postLogin',[AuthController::class,'postLogin']);
+Route::get('/login',[AuthController::class, 'login'])->name('login');
+Route::get('/register',[AuthController::class, 'register']);
 
 //item sama dengan barang
 // Route::get('/items',[ItemsController::class,'index']);
@@ -42,4 +45,7 @@ Route::get('/register',[PagesController::class, 'register']);
 // Route::patch('/items/{item}',[ItemsController::class,'update']);
 
 //mengganti route item semuanya
-Route::resource('items',ItemsController::class);
+Route::group(['Middleware' => 'auth'], function(){
+    Route::resource('items',ItemsController::class);
+    Route::get('/logout',[AuthController::class, 'logout']);
+});

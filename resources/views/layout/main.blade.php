@@ -19,10 +19,18 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                <a class="nav-link active" href="{{ url('/') }}">Home </a>
-                <a class="nav-link" href="{{ url('/barang') }}">Barang</a>
-                <a class="nav-link" href="{{ url('/items') }}">Items</a>
-                <a class="nav-link" href="{{ url('/about') }}">About</a>
+                  <a class="nav-link {{ set_active('home') }}" href="{{ url('/') }}">Home </a>
+                  <a class="nav-link {{ set_active('barang') }}" href="{{ url('/barang') }}">Catalog</a>
+                  <a class="nav-link {{ set_active('items') }}" href="{{ url('/items') }}">Item Manager</a>
+                  <a class="nav-link {{ set_active('about') }}" href="{{ url('/about') }}">About</a>
+                </div>
+                <div class="navbar-nav mr-auto">
+                @auth
+                  <a class="nav-link" href="{{ url('/logout') }}">Logout</a>
+                @endauth
+                @guest 
+                  <a class="nav-link" href="{{ url('/login') }}">Login</a>
+                @endguest
                 </div>
             </div>
         </div>

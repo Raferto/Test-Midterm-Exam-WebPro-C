@@ -14,12 +14,4 @@ class PagesController extends Controller
     {
         return view('about',['tipe' => 'sekolah']);
     }
-    public function login()
-    {
-        return view('authpage.login');
-    }
-    public function register()
-    {
-        return view('authpage.register');
-    }
 }
