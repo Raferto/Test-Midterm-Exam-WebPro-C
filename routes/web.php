@@ -45,7 +45,7 @@ Route::get('/register',[AuthController::class, 'register']);
 // Route::patch('/items/{item}',[ItemsController::class,'update']);
 
 //mengganti route item semuanya
-Route::group(['Middleware' => 'auth'], function(){
+Route::group(['middleware' => 'auth'], function(){
     Route::resource('items',ItemsController::class);
     Route::get('/logout',[AuthController::class, 'logout']);
 });

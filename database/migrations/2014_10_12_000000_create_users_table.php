@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->string('phone', 15);
-            $table->text('address');
+            $table->text('address')->nullable();
             $table->foreignId('city_id')->nullable()->unsigned;
             $table->timestamps();
             $table->string('auth_level');
