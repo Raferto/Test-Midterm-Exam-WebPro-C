@@ -1,5 +1,5 @@
 @extends('layout/main')
-@section('title','Form Ubah Data Barang')
+@section('title','')
 
 @section('container')
 <div class="container">
@@ -20,19 +20,19 @@
                 <div class="form-group">
                     <label for="item_description">Item Description</label>
                     <input type="text" class="form-control"
-                    id="item_description" placeholder="Insert Your Item Description" name="item_description" value="{{ $item->item_description }}" required>
+                    id="item_description" placeholder="Insert Your Item Description" name="item_description" value="{{ $item->item_description }}">
                 </div>
 
                 <div class="form-group">
                     <label for="item_price">Price</label>
                     <input type="number" min=0 class="form-control" 
-                    id="item_price" placeholder="Insert Your Item Price" name="price"value="{{ $item->price }}">
+                    id="item_price" placeholder="Insert Your Item Price" name="price"value="{{ $item->price }}" required>
                 </div>
 
                 <div class="form-group">
                     <label for="item_stock">Stock</label>
                     <input type="number" min=0 class="form-control" 
-                    id="item_stock" placeholder="Insert Your Item Stock" name="item_stock"value="{{ $item->item_stock }}">
+                    id="item_stock" placeholder="Insert Your Item Stock" name="item_stock"value="{{ $item->item_stock }}" required>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>

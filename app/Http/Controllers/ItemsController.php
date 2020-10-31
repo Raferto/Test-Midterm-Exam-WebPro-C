@@ -17,7 +17,7 @@ class ItemsController extends Controller
      */
     public function index()
     {
-        $items = Item::all();
+        $items = Item::where('shop_id', auth()->user()->shop_id)->get();
         return view('items/index',compact('items'));
     }
 
@@ -54,7 +54,7 @@ class ItemsController extends Controller
         $data['shop_id'] = $current_user->shop_id;
 
         Item::create($data);
-        return redirect('/items')->with('status','Data Barang Berhasil Ditambahkan!');
+        return redirect('/items')->with('status','Item has been added');
         // return $request;
     }
 
@@ -91,16 +91,19 @@ class ItemsController extends Controller
     {
         $request->validate([
             'item_name' => 'required',
-            'category_id' => 'required'
+            'price' => 'required',
+            'item_stock' => 'required'
         ]);
         
         Item::where('id',$item->id)
             ->update([
                 'item_name' => $request->item_name,
-                'category_id' => $request->category_id
+                'price' => $request->price,
+                'item_stock' => $request->item_stock,
+                'item_description' => $request->item_description
             ]);
 
-        return redirect('/items')->with('status','Data Barang Berhasil Diubah!');
+        return redirect('/items')->with('status','Item Detail Has Changes!');
     }
 
     /**
@@ -112,6 +115,6 @@ class ItemsController extends Controller
     public function destroy(Item $item)
     {
         Item::destroy($item->id);
-        return redirect('/items')->with('status','Data Barang Berhasil Dihapus!');
+        return redirect('/items')->with('status','Item Has Been Deleted!');
     }
 }
