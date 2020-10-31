@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-10">
-            <h1 class="mt-2">Hi, What item did you need!</h1>
+            <h1 class="mt-2">Hi, What kind item did you need?</h1>
 
 		</div>
     </div>
@@ -15,11 +15,18 @@
         
         <div class="welcome-menu">
             @foreach( $categories as $category)
+            <?php 
+                $c = $loop->count % 3;
+                $className = 'ml-col-3';
+                if($loop->remaining < $c){
+                    $className = 'ml-col-'.$c;
+                }
+            ?>
 			<a href="/catalog/category/{{ $category->id }}">
-				<div class="menu-list ml-regular ml-col-3">
+				<div class="menu-list ml-regular {{ $className }}">
 					<div class="inner-wrapper">
 						<h2>{{ $category->category_name }}</h2>
-						<img src="https://ak.picdn.net/shutterstock/videos/29452684/thumb/1.jpg">
+						<img src="{{ $category->image_url }}">
 					</div>
 				</div>
             </a>
