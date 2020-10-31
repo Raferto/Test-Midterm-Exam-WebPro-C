@@ -32,7 +32,6 @@ Route::get('/',[PagesController::class, 'home'])->name('home');
 Route::get('/about',[PagesController::class,'about'])->name('about');
 Route::get('/catalog',[CatalogController::class,'index'])->name('catalog');
 
-Route::get('/catalog/price/min={maxPrice}&max={maxPrice}',[CatalogController::class,'index'])->name('catalog');
 Route::post('/postLogin',[AuthController::class,'postLogin']);
 Route::post('/postRegister', [AuthController::class, 'postRegister']);
 Route::get('/login',[AuthController::class, 'login'])->name('login');
