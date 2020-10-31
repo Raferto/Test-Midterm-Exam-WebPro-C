@@ -16,6 +16,8 @@
                         <th scope="col">Shop Name</th>
                         <th scope="col">Shop Bagde</th>
                         <th scope="col">Location</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Condition</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,6 +29,8 @@
                         <td>{{ $item->shop_name }}</td>
                         <td>{{ $item->badge_name }}</td>
                         <td>{{ $item->city_name }}</td>
+                        <td>{{ $item->category_name }}</td>
+                        <td>{{ $item->condition_name }}</td>
                     </tr>
                     @endforeach
                 </tbody>

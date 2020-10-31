@@ -21,6 +21,8 @@ class CatalogController extends Controller
         $item_list = Item::join('shops', 'items.shop_id', '=', 'shops.id')
                ->join('shop_badges', 'shops.badge_id', '=', 'shop_badges.id')
                ->join('cities', 'shops.city_id', '=', 'cities.id')
+               ->join('item_categories', 'items.category_id', '=', 'item_categories.id')
+               ->join('item_conditions', 'items.condition_id', '=', 'item_conditions.id')
                ->get();
 
         // return view('debug', ['request' => $users[0]->shop_name]);
