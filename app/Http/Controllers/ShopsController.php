@@ -15,7 +15,7 @@ class ShopsController extends Controller
         $current_user = auth()->user();
         if($current_user->auth_level == 'shopper'){
             $myshop = Shop::find($current_user->shop_id);
-            return view('shop.myShop', ['myshop' => $myshop]);
+            return view('shop.myshop', ['myshop' => $myshop]);
         }
         else{
             $states = State::all();
