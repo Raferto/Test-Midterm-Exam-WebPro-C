@@ -14,8 +14,6 @@
                         <th scope="col">Item Name</th>
                         <th scope="col">Price</th>
                         <th scope="col">Shop Name</th>
-                        <th scope="col">Shop Bagde</th>
-                        <th scope="col">Location</th>
                         <th scope="col">Category</th>
                         <th scope="col">Condition</th>
                     </tr>
@@ -27,8 +25,6 @@
                         <td>{{ $item->item_name }}</td>
                         <td>Rp {{ $item->price }}</td>
                         <td>{{ $item->shop_name }}</td>
-                        <td>{{ $item->badge_name }}</td>
-                        <td>{{ $item->city_name }}</td>
                         <td>{{ $item->category_name }}</td>
                         <td>{{ $item->condition_name }}</td>
                     </tr>

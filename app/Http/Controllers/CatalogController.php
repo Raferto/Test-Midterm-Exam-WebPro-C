@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Item;
+use App\Models\ItemCategory;
 
 class CatalogController extends Controller
 {
@@ -13,20 +14,35 @@ class CatalogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function getJoinItem(){
+        $item_list = Item::join('shops', 'items.shop_id', '=', 'shops.id')
+        ->join('item_categories', 'items.category_id', '=', 'item_categories.id')
+        ->join('item_conditions', 'items.condition_id', '=', 'item_conditions.id');
+
+        return $item_list;
+    }
+    
+    public function filterCategory($id){
+        $item_list = CatalogController::getJoinItem()->where('items.category_id','=', $id)->get();
+        return view('catalog.index', ['item_list' => $item_list]);
+    }
+
+    public function indexCategory(){
+        $categories = ItemCategory::all();
+        return view('catalog.category', ['categories' => $categories]);
+    }
+
     public function index()
     {
         // $catalog = DB::table('items')->get();
         // $item_list = Item::all();
         // dump($catalog);
-        $item_list = Item::join('shops', 'items.shop_id', '=', 'shops.id')
-               ->join('shop_badges', 'shops.badge_id', '=', 'shop_badges.id')
-               ->join('cities', 'shops.city_id', '=', 'cities.id')
-               ->join('item_categories', 'items.category_id', '=', 'item_categories.id')
-               ->join('item_conditions', 'items.condition_id', '=', 'item_conditions.id')
-               ->get();
 
-        // return view('debug', ['request' => $users[0]->shop_name]);
+        $item_list = CatalogController::getJoinItem()->get();
+        // dd($item_list);
         return view('catalog/index', ['item_list' => $item_list]);
+        //CatalogController::filterCategory();
     }
 
     /**
