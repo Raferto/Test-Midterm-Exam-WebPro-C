@@ -38,7 +38,7 @@
 				</div>
 			</a>
 
-			<a href="/profile">
+			<a href="{{ url('/profile') }}">
 				<div class="menu-list ml-regular ml-col-3">
 					<div class="inner-wrapper">
 						<h2>Profile</h2>
