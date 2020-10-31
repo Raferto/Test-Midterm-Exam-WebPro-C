@@ -31,6 +31,7 @@ use App\Http\Controllers\ShopsController;
 Route::get('/',[PagesController::class, 'home'])->name('home');
 Route::get('/about',[PagesController::class,'about'])->name('about');
 Route::get('/catalog',[CatalogController::class,'index'])->name('catalog');
+Route::get('/profile',[PagesController::class,'profile'])->name('profile');
 
 Route::post('/postLogin',[AuthController::class,'postLogin']);
 Route::post('/postRegister', [AuthController::class, 'postRegister']);

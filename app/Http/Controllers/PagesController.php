@@ -12,6 +12,10 @@ class PagesController extends Controller
     }
     public function about()
     {
-        return view('about',['tipe' => 'sekolah']);
+        return view('about');
+    }
+    public function profile()
+    {
+        return view('profile');
     }
 }

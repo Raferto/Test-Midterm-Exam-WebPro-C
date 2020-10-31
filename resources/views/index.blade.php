@@ -10,7 +10,7 @@
             @endauth
 
             @guest
-            <h1 class="mt-2">Hello, world!</h1>
+            <h1 class="mt-2">Hello, welcome to our website!</h1>
             @endguest
         </div>
     </div>

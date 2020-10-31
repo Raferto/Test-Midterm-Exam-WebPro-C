@@ -36,9 +36,18 @@
 
                 </div>
                 <div class="navbar-nav my-2 my-md-0 mr-md-3">
+                  
+                  @auth
                   <li class="nav-item">
                     <a class="nav-link {{ set_active('profile') }}" href="{{ url('/profile') }}">Profile</a>
                   </li>
+                  @endauth
+                  @guest
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/login') }}">Profile</a>
+                  </li>
+                  @endguest
+                  
                   <li class="nav-item">
                     <a class="nav-link {{ set_active('shop') }}" href="{{ url('/shop') }}">MyShop</a>
                   </li>
