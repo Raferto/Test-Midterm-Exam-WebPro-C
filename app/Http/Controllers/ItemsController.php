@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\ItemCondition;
+use App\Models\ItemCategory;
+use App\Models\Shop;
 use Illuminate\Http\Request;
 
 class ItemsController extends Controller
@@ -14,7 +17,7 @@ class ItemsController extends Controller
      */
     public function index()
     {
-        $items = Item::all();
+        $items = Item::where('shop_id', auth()->user()->shop_id)->get();
         return view('items/index',compact('items'));
     }
 
@@ -25,7 +28,9 @@ class ItemsController extends Controller
      */
     public function create()
     {
-        return view('items.create');
+        $categories = ItemCategory::all();
+        $conditions = ItemCondition::all();
+        return view('items.create', ['categories' => $categories, 'conditions' => $conditions ]);
     }
 
     /**
@@ -35,28 +40,21 @@ class ItemsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        // cara 1
-        // $item = new Item;
-        // $item->item_name = $request->item_name;
-        // $item->category_id = $request->category_id;
-
-        // $item->save();
-
-        //cara 2
-        // Item::create([
-        //     'item_name' => $request->item_name,
-        //     'category_id' => $request->category_id
-        // ]);
-        
+    {        
         $request->validate([
             'item_name' => 'required',
-            'category_id' => 'required'
+            'category_id' => 'required',
+            'condition_id' => 'required',
+            'item_stock' => 'required',
+            'price' => 'required',
         ]);
+        
+        $current_user = auth()->user();
+        $data = $request->all();
+        $data['shop_id'] = $current_user->shop_id;
 
-        // cara 3
-        Item::create($request->all());
-        return redirect('/items')->with('status','Data Barang Berhasil Ditambahkan!');
+        Item::create($data);
+        return redirect('/items')->with('status','Item has been added');
         // return $request;
     }
 
@@ -93,16 +91,19 @@ class ItemsController extends Controller
     {
         $request->validate([
             'item_name' => 'required',
-            'category_id' => 'required'
+            'price' => 'required',
+            'item_stock' => 'required'
         ]);
         
         Item::where('id',$item->id)
             ->update([
                 'item_name' => $request->item_name,
-                'category_id' => $request->category_id
+                'price' => $request->price,
+                'item_stock' => $request->item_stock,
+                'item_description' => $request->item_description
             ]);
 
-        return redirect('/items')->with('status','Data Barang Berhasil Diubah!');
+        return redirect('/items')->with('status','Item Detail Has Changes!');
     }
 
     /**
@@ -114,6 +115,6 @@ class ItemsController extends Controller
     public function destroy(Item $item)
     {
         Item::destroy($item->id);
-        return redirect('/items')->with('status','Data Barang Berhasil Dihapus!');
+        return redirect('/items')->with('status','Item Has Been Deleted!');
     }
 }

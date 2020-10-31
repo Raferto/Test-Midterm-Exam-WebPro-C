@@ -9,7 +9,7 @@ class Shop extends Model
 {
     protected $fillable = [
         'shop_name',
-        'bagde_id',
+        'badge_id',
         'city_id',
         'address',
     ];

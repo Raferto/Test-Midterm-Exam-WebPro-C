@@ -2,10 +2,16 @@
 @section('title','Profile')
 
 @section('container')
+
 <div class="container">
     <div class="row">
         <div class="mt-3">
+                @guest
+                    <h3>You must login to view your profile</h3>
+                @endguest
             <div class="col-10">
+                
+                @auth
                 <div class="card" style="width: 18rem;">
                     <div class="card-header">
                         Profile
@@ -15,6 +21,8 @@
                         <li class="list-group-item"> {{ auth()->user()->username }}</li>
                         <li class="list-group-item"> {{ auth()->user()->email }} </li>
                     </ul>
+                    @endauth
+
                 </div>
             </div>
         </div>
