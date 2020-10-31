@@ -37,16 +37,6 @@
 					</div>
 				</div>
 			</a>
-
-			<a href="{{ url('/profile') }}">
-				<div class="menu-list ml-regular ml-col-3">
-					<div class="inner-wrapper">
-						<h2>Profile</h2>
-						<img src="https://images.unsplash.com/photo-1500239524810-5a6e76344a17?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80">
-					</div>
-				</div>
-			</a>
-
 			<a href="/shop">
 				<div class="menu-list ml-reverse ml-col">
 					<div class="inner-wrapper">
