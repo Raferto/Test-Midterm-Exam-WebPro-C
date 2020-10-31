@@ -16,8 +16,14 @@ class CatalogController extends Controller
     public function index()
     {
         // $catalog = DB::table('items')->get();
-        $item_list = Item::all();
+        // $item_list = Item::all();
         // dump($catalog);
+        $item_list = Item::join('shops', 'items.shop_id', '=', 'shops.id')
+               ->join('shop_badges', 'shops.badge_id', '=', 'shop_badges.id')
+               ->join('cities', 'shops.city_id', '=', 'cities.id')
+               ->get();
+
+        // return view('debug', ['request' => $users[0]->shop_name]);
         return view('catalog/index', ['item_list' => $item_list]);
     }
 

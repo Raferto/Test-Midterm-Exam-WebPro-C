@@ -30,6 +30,11 @@ class ShopsController extends Controller
         echo json_encode($cities);
     }
 
+    public function GetShopName($id){
+        $shops = Shop::where('id', $id)->get();
+        return $shops[0]->shop_name;
+    }
+
     public function create(Request $request){
         $current_user = auth()->user();
         $current_shop = Shop::create($request->all());

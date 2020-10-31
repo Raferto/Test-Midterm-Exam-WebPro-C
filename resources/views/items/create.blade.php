@@ -35,22 +35,23 @@
                         @endforeach
                     </select>
                 </div>
+
                 <div class="form-group">
                     <label for="item_description">Item Description</label>
                     <input type="text" class="form-control"
-                    id="item_description" placeholder="Insert Item Description" name="item_description" value="{{ old('item_name') }}">
+                    id="item_description" placeholder="Insert Item Description" name="item_description" value="{{ old('item_description') }}">
                 </div>
 
                 <div class="form-group">
-                    <label for="item_category">Price</label>
+                    <label for="item_price">Price</label>
                     <input type="number" min=0 class="form-control" 
-                    id="item_price" placeholder="Insert Your Item Price" name="price"value="{{ old('item_category') }}">
+                    id="item_price" placeholder="Insert Your Item Price" name="price"value="{{ old('price') }}">
                 </div>
 
                 <div class="form-group">
-                    <label for="item_category">Stock</label>
+                    <label for="item_stock">Stock</label>
                     <input type="number" min=0 class="form-control" 
-                    id="item_stock" placeholder="Insert Your Item Stock" name="item_stock"value="{{ old('item_category') }}">
+                    id="item_stock" placeholder="Insert Your Item Stock" name="item_stock"value="{{ old('item_stock') }}">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>

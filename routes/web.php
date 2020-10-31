@@ -45,6 +45,7 @@ Route::get('/register',[AuthController::class, 'register']);
 // Route::delete('/items/{item}',[ItemsController::class,'destroy']);
 // Route::get('/items/{item}/edit',[ItemsController::class,'edit']);
 // Route::patch('/items/{item}',[ItemsController::class,'update']);
+Route::get('GetShopName/{id}', [ShopsController::class, 'GetShopName']);
 
 //mengganti route item semuanya
 Route::group(['middleware' => 'auth'], function(){

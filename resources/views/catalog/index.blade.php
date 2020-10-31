@@ -12,8 +12,10 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Item Name</th>
-                        <th scope="col">Item Categoty</th>
-                        <th scope="col">Aksi</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Shop Name</th>
+                        <th scope="col">Shop Bagde</th>
+                        <th scope="col">Location</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -21,16 +23,21 @@
                     <tr>
                         <th scope="row">{{ $loop->iteration }}</th>
                         <td>{{ $item->item_name }}</td>
-                        <td>{{ $item->item_category }}</td>
-                        <td>
-                            <a href="" class="badge badge-success">edit</a>
-                            <a href="" class="badge badge-danger">delete</a>
-                        </td>
+                        <td>Rp {{ $item->price }}</td>
+                        <td>{{ $item->shop_name }}</td>
+                        <td>{{ $item->badge_name }}</td>
+                        <td>{{ $item->city_name }}</td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
+
         </div>
     </div>
 </div>
+
+<script>
+
+</script>
+
 @endsection
