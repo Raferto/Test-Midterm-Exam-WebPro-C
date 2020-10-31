@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class ItemCondition extends Model
 {
-    public $table='item_conditions';
+    protected $table='item_conditions';
+    
+    protected $fillable = [
+        'condition_name',
+    ];
 }

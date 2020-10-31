@@ -23,7 +23,7 @@
                     <a href="/items/{{$item->id}}"class="badge badge-info">detail</a>
                 </li>
                 @endforeach
-
+                
             </ul>
         </div>
     </div>

@@ -34,6 +34,7 @@ class ShopsController extends Controller
         $current_user = auth()->user();
         $current_shop = Shop::create($request->all());
         
+        // return view('debug', ['request' => $request->all()]);
         User::where('id', $current_user->id)->update([
             'auth_level' => 'shopper',
             'shop_id' => $current_shop->id
