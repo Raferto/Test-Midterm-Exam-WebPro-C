@@ -31,8 +31,8 @@ use App\Http\Controllers\ShopsController;
 Route::get('/',[PagesController::class, 'home'])->name('home');
 Route::get('/about',[PagesController::class,'about'])->name('about');
 Route::get('/catalog',[CatalogController::class,'index'])->name('catalog');
-Route::get('/profile',[PagesController::class,'profile'])->name('profile');
 
+Route::get('/catalog/price/min={maxPrice}&max={maxPrice}',[CatalogController::class,'index'])->name('catalog');
 Route::post('/postLogin',[AuthController::class,'postLogin']);
 Route::post('/postRegister', [AuthController::class, 'postRegister']);
 Route::get('/login',[AuthController::class, 'login'])->name('login');
@@ -51,6 +51,7 @@ Route::get('/catalog/category/{id}', [CatalogController::class, 'filterCategory'
 
 //mengganti route item semuanya
 Route::group(['middleware' => 'auth'], function(){
+    Route::get('/profile',[PagesController::class,'profile'])->name('profile');
     Route::resource('items',ItemsController::class);
     Route::get('/shop', [ShopsController::class, 'show']);
     Route::post('/shopCreate', [ShopsController::class, 'create']);
