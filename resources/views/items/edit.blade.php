@@ -5,30 +5,37 @@
 <div class="container">
     <div class="row">
         <div class="col-8">
-            <h1 class="mt-2">Form Ubah Data Barang</h1>
+            <h1 class="mt-2">Edit Item Form</h1>
             
             <form method="post" action="/items/{{ $item->id }}">
-            @method('patch')
             <!-- untuk keamanan tambahkan csrf -->
+            @method('patch')
             @csrf
                 <div class="form-group">
-                    <label for="item_name">Nama</label>
-                    <input type="text" class="form-control @error('item_name') is-invalid @enderror"
-                    id="item_name" placeholder="Masukkan Nama Barang" name="item_name" value="{{ $item->item_name }}">
-                    @error('item_name')
-                    <div class="invalid-feedback"> {{ $message }} </div>
-                    @enderror
+                    <label for="item_name">Name</label>
+                    <input type="text" class="form-control"
+                    id="item_name" placeholder="Insert Your Item Name" name="item_name" value="{{ $item->item_name }}" required>
                 </div>
+                
                 <div class="form-group">
-                    <label for="item_category">Jenis</label>
-                    <!-- old value untuk tetap ada nilanya jika ada yang error -->
-                    <input type="text" class="form-control @error('item_category') is-invalid @enderror" 
-                    id="item_category" placeholder="Masukkan Jenis Barang" name="item_category"value="{{ $item->item_category }}">
-                    @error('item_category')
-                    <div class="invalid-feedback"> {{ $message }} </div>
-                    @enderror
+                    <label for="item_description">Item Description</label>
+                    <input type="text" class="form-control"
+                    id="item_description" placeholder="Insert Your Item Description" name="item_description" value="{{ $item->item_description }}" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Ubah Data</button>
+
+                <div class="form-group">
+                    <label for="item_price">Price</label>
+                    <input type="number" min=0 class="form-control" 
+                    id="item_price" placeholder="Insert Your Item Price" name="price"value="{{ $item->price }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="item_stock">Stock</label>
+                    <input type="number" min=0 class="form-control" 
+                    id="item_stock" placeholder="Insert Your Item Stock" name="item_stock"value="{{ $item->item_stock }}">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
 
         </div>

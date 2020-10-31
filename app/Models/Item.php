@@ -10,5 +10,13 @@ class Item extends Model
 {
     use SoftDeletes;
     //mass assignment untuk cara 2, kalo guarded sisanya boleh
-    protected $fillable = ['item_name','item_category'];
+    protected $fillable = [
+        'category_id',
+        'shop_id',
+        'condition_id',
+        'item_name',
+        'item_stock',
+        'item_description',
+        'price'
+    ];
 }

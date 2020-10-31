@@ -5,14 +5,14 @@
 <div class="container">
     <div class="row">
         <div class="col-10">
-            <h1 class="mt-2">Daftar Barang</h1>
+            <h1 class="mt-2">Catalog List</h1>
             
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Nama Barang</th>
-                        <th scope="col">Jenis Barang</th>
+                        <th scope="col">Item Name</th>
+                        <th scope="col">Item Categoty</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
