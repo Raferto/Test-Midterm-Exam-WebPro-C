@@ -2,9 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
-use App\Http\Controllers\BarangController;
+use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ShopsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,14 +30,13 @@ use App\Http\Controllers\AuthController;
 
 Route::get('/',[PagesController::class, 'home'])->name('home');
 Route::get('/about',[PagesController::class,'about'])->name('about');
-Route::get('/barang',[BarangController::class,'index']);
+Route::get('/catalog',[CatalogController::class,'index'])->name('catalog');
 
 Route::post('/postLogin',[AuthController::class,'postLogin']);
 Route::post('/postRegister', [AuthController::class, 'postRegister']);
 Route::get('/login',[AuthController::class, 'login'])->name('login');
 Route::get('/register',[AuthController::class, 'register']);
 
-//item sama dengan barang
 // Route::get('/items',[ItemsController::class,'index']);
 // Route::get('/items/create',[ItemsController::class,'create']);
 // Route::get('/items/{item}',[ItemsController::class,'show']);
@@ -48,5 +48,8 @@ Route::get('/register',[AuthController::class, 'register']);
 //mengganti route item semuanya
 Route::group(['middleware' => 'auth'], function(){
     Route::resource('items',ItemsController::class);
+    Route::get('/shop', [ShopsController::class, 'show']);
+    Route::post('/shopCreate', [ShopsController::class, 'create']);
     Route::get('/logout',[AuthController::class, 'logout']);
+    Route::get('GetCitybyState/{id}', [ShopsController::class, 'GetCitybyState']);
 });

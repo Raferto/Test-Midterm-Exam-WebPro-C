@@ -39,19 +39,19 @@ class ItemsController extends Controller
         // cara 1
         // $item = new Item;
         // $item->item_name = $request->item_name;
-        // $item->item_category = $request->item_category;
+        // $item->category_id = $request->category_id;
 
         // $item->save();
 
         //cara 2
         // Item::create([
         //     'item_name' => $request->item_name,
-        //     'item_category' => $request->item_category
+        //     'category_id' => $request->category_id
         // ]);
         
         $request->validate([
             'item_name' => 'required',
-            'item_category' => 'required'
+            'category_id' => 'required'
         ]);
 
         // cara 3
@@ -93,13 +93,13 @@ class ItemsController extends Controller
     {
         $request->validate([
             'item_name' => 'required',
-            'item_category' => 'required'
+            'category_id' => 'required'
         ]);
         
         Item::where('id',$item->id)
             ->update([
                 'item_name' => $request->item_name,
-                'item_category' => $request->item_category
+                'category_id' => $request->category_id
             ]);
 
         return redirect('/items')->with('status','Data Barang Berhasil Diubah!');

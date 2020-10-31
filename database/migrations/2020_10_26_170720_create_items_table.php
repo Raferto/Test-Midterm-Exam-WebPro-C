@@ -20,7 +20,7 @@ class CreateItemsTable extends Migration
             $table->foreignId('condition_id');
             $table->string('item_name');
             $table->integer('item_stock')->unsigned();
-            $table->text('item_description');
+            $table->text('item_description')->nullable();
             $table->timestamps();
         });
     }

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Item;
 
-class BarangController extends Controller
+class CatalogController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +15,10 @@ class BarangController extends Controller
      */
     public function index()
     {
-        // $barang = DB::table('items')->get();
-        $barang = Item::all();
-        // dump($barang);
-        return view('barang/index',['barang' => $barang]);
+        // $catalog = DB::table('items')->get();
+        $item_list = Item::all();
+        // dump($catalog);
+        return view('catalog/index', ['item_list' => $item_list]);
     }
 
     /**
